@@ -1,10 +1,23 @@
 const express = require('express');
 let app = express();
 const bodyParser = require ('body-parser');
+var faker = require('faker');
+const seeding = require('../database/seeder.js')
+
+var randomname = faker.image.imageUrl()
+
+
 
 
 app.use(express.static(__dirname + '/../public/dist'));
+app.use(bodyParser.urlencoded())
+app.use(bodyParser.json());
 
+
+app.get('/faker', function (req,res) {
+  res.send(randomname)
+
+})
 
 
 
