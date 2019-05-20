@@ -1,18 +1,20 @@
 const AWS = require('aws-sdk');
 const Credentials = require ('../config.js');
-const fs = require('fs');
-const path = require('path');
 
 
 
+//configuring the AWS environment
+//This function will retrieve the Credentials from config.js.
+//These credentials have been created in Amazon S3. The name of the Bucket is the name of the Bucket created in S3 where I have previously stored 100 images related to products.
 (async function () {
   try {
+    //connects to Amazon S3
     AWS.config.update({
       accessKeyId: Credentials.AccessKeyID,
       secretAccessKey: Credentials.SecretAccessKey,
       region: 'us-east-1'
     });
-
+    //Access the Bucket and retrieves all files in the Bucket
     s3 = new AWS.S3();
     const response = await s3.listObjectsV2({
       Bucket: 'renderingimagesforetsy'
@@ -26,7 +28,29 @@ const path = require('path');
 })();
 
 
-//configuring the AWS environment
+
+let seeding = function () {
+  console.log(db.Images)
+  // db.Images.drop();
+  let imageCollection = [];
+  for (let i = 0; i <= 100; i ++){
+    var image = new db.Images({
+      imageUrl: `http://lorempixel.com/800/800`
+    });
+    imageCollection.push(image)
+  }
+  db.Images.insertMany(imageCollection, function(err, res) {
+    if (err) throw err;
+    console.log(res);
+    db.close();
+  });
+}
+
+seeding();
+
+
+module.exports.seeding = seeding;
+
 
 
 

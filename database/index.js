@@ -1,11 +1,22 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/images');
+mongoose.connect('mongodb://localhost:27017/images', {
+
+  useMongoClient: true,
+});
 
 let imageSchema = new mongoose.Schema({
-  url: String
+  url:  { type : String }
 })
 
+
+
 const Image = mongoose.model('Image', imageSchema);
+
+var oneLink = new Image ({url: 'elurldellink'})
+
+console.log(oneLink.url)
+
+
 
 let save = image => {
   var data = new Image ({
@@ -16,7 +27,9 @@ let save = image => {
   })
 }
 
-// let fetch = (callback) => {
+oneLink.save();
+
+//let fetch = (callback) => {
 //   Images.find((error, results) => {
 //     if (error) {
 //       callback(error, null);
