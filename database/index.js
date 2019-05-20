@@ -1,6 +1,6 @@
+
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/images', {
-
   useMongoClient: true,
 });
 
@@ -28,6 +28,15 @@ let save = image => {
 }
 
 oneLink.save();
+
+
+
+// const dropCollection = (callback) => { // clears whole db
+//   Image.dropCollection()
+// }
+// // dropCollection()
+// Image.deleteMany({url: true})
+// console.log(Image.deleteMany)
 
 //let fetch = (callback) => {
 //   Images.find((error, results) => {
