@@ -24,6 +24,18 @@ class ImageCarousel extends React.Component {
   this.previousSlide = this.previousSlide.bind(this)
   }
 
+  async componentDidMount() {
+    try {
+
+      let response = await fetch('/product-images');
+      let pictures = await response.json();
+      console.log(pictures)
+      //imgUrls.push({ movies });
+    } catch (err) {
+      console.error('Encountered error fetching product images', err);
+    }
+  }
+
   //On LeftArrow Click the carousel will display the image that precedes the current one, and if it is displaying the first one will display the last one next
   previousSlide () {
     const lastIndex = imgUrls.length - 1;

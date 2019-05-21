@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //This function will retrieve the Credentials from config.js.
 //These credentials have been created in Amazon S3. The name of the Bucket is the name of the Bucket created in S3 where I have previously stored 100 images related to products.
 
-(async function () {
+const seeder = async function () {
   try {
     //connects to Amazon S3
     AWS.config.update({
@@ -32,7 +32,10 @@ const mongoose = require('mongoose');
   } catch (e) {
     console.log('our error', e);
   }
-})();
+};
+
+
+// seeder()
 
 const {Image} = require ('./index.js')
 
@@ -47,8 +50,7 @@ function deleteTable () {
   })
 }
 
-
-
+module.exports.seeder = seeder;
 
 
 
