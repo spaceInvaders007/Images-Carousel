@@ -7,12 +7,7 @@ import $ from 'jquery';
 // import cat from '../../lib/images/cat.jpg'
 
 
-const imgUrls = [
-	"https://natgeo.imgix.net/factsheets/thumbnails/stillife-asparagus-germany.ngsversion.1553893745762.adapt.1900.jpg?auto=compress,format&w=1024&h=560&fit=crop",
-	"https://natgeo.imgix.net/meal-asparagus-germany.adapt.1900.1.jpg?auto=compress,format&w=728",
-	"https://natgeo.imgix.net/detail-asparagus-germany.adapt.1900.1.jpg?auto=compress,format&w=728",
-	"https://natgeo.imgix.net/plated-asparagus-germany.adapt.1900.1.jpg?auto=compress,format&w=728"
-];
+const imgUrls = [];
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -29,8 +24,14 @@ class ImageCarousel extends React.Component {
 
       let response = await fetch('/product-images');
       let pictures = await response.json();
-      console.log(pictures)
-      //imgUrls.push({ movies });
+      let images = pictures.images
+      images.forEach(function(image){
+        imgUrls.push(image.url)
+
+      })
+     this.setState ({
+      currentImageIndex: 0
+     })
     } catch (err) {
       console.error('Encountered error fetching product images', err);
     }
@@ -64,8 +65,7 @@ class ImageCarousel extends React.Component {
   render () {
     return (
     <div className="carousel">
-     {/* <img className="media-on-index" src={'https://natgeo.imgix.net/factsheets/thumbnails/stillife-asparagus-germany.ngsversion.1553893745762.adapt.1900.jpg?auto=compress,format&w=1024&h=560&fit=crop'}  alt="" /> */}
-    this is react
+
       <LeftArrow
         clickFunction={this.previousSlide}
         image='&#9664;'/>

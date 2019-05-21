@@ -1,25 +1,30 @@
 const express = require('express');
 let app = express();
 const bodyParser = require ('body-parser');
-// var faker = require('faker');
-const seeding = require('../database/aws.js')
-
-//var randomname = faker.image.imageUrl()
+const db = require('../database/index.js');
+// const seeding = require('../database/aws.js')
 
 
-console.log(seeding)
+
+
+// console.log(seeding)
 
 app.use(express.static(__dirname + '/../public/dist'));
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 
 
-// app.get('/faker', function (req,res) {
-//   res.send(randomname)
-
-// })
 
 
+app.get('/product-images', function (req,res, next) {
+  db.Image.find({}, function(err, images) {
+    if (err) {
+      next(err)
+    } else {
+      return res.json({images: images});
+    }
+  })
+})
 
 
 let port = process.env.PORT || 3001;
