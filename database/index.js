@@ -8,15 +8,11 @@ let imageSchema = new mongoose.Schema({
   url:  { type : String }
 })
 
-
-
 const Image = mongoose.model('Image', imageSchema);
 
-var oneLink = new Image ({url: 'elurldellink'})
-
-console.log(oneLink.url)
-
-
+//test to see if documents are added to the collection properly
+// var oneLink = new Image ({url: 'elurldellink'})
+// console.log(oneLink.url)
 
 let save = image => {
   var data = new Image ({
@@ -27,31 +23,8 @@ let save = image => {
   })
 }
 
-oneLink.save();
-
-
-
-// const dropCollection = (callback) => { // clears whole db
-//   Image.dropCollection()
-// }
-// // dropCollection()
-// Image.deleteMany({url: true})
-// console.log(Image.deleteMany)
-
-//let fetch = (callback) => {
-//   Images.find((error, results) => {
-//     if (error) {
-//       callback(error, null);
-//       return
-//     }
-//   var images = {};
-//   for (let i = 0; i < results.length; i ++) {
-//     if(images[results[i].imageUrl] === undefined)
-//   }
-//   })
-// }
-
+//part of the test above
+// oneLink.save();
 
 module.exports.Image = Image;
 module.exports.save = save;
-// bye S
