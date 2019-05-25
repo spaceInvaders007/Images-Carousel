@@ -2,7 +2,7 @@ import React from 'react';
 import OneRelatedImage from './OneRelatedImage.jsx';
 
 const RelatedImages = ({url, imgUrls, handleRelatedImageClick}) => {
-  // , handleRelatedImageClick
+
   return (
     <div className="related-images-container">
       {url.map((image) =>
