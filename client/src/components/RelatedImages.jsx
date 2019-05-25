@@ -1,15 +1,22 @@
 import React from 'react';
 import OneRelatedImage from './OneRelatedImage.jsx';
 
-const Related = ({url}) => {
-
+const RelatedImages = ({url, imgUrls, handleRelatedImageClick}) => {
+  // , handleRelatedImageClick
   return (
     <div className="related-images-container">
       {url.map((image) =>
-        <OneRelatedImage image={image}/>
+        <OneRelatedImage
+          image={image}
+          imgUrls={imgUrls}
+          handleRelatedImageClick={handleRelatedImageClick}
+
+        />
       )}
     </div>
   );
 }
 
-export default Related;
+export default RelatedImages;
+
+
