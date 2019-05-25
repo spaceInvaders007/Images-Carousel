@@ -59,6 +59,7 @@ html, body, #container, .carousel {
 	float: left;
 	margin: 10px;
 	align-content: center;
+	cursor: pointer;
 }
 
 .related-images-container {
