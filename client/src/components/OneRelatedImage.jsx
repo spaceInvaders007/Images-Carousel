@@ -13,4 +13,6 @@ const OneRelatedImage = ({image}) => {
   );
 }
 
+
+
 export default OneRelatedImage;
