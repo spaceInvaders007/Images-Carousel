@@ -21,7 +21,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "aws-sdk": "^2.458.0",
+    "aws-sdk": "^2.814.0",
     "body": "^5.1.0",
     "body-parser": "^1.17.0",
     "chai": "^4.2.0",
